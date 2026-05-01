@@ -1,0 +1,19 @@
+# Secret / runtime data — never commit
+.env
+data/
+server/data/
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
