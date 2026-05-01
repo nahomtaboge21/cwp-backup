@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CWP Backup Manager - company portal for backups, schedules, and activity logs." />
+    <meta name="theme-color" content="#020818" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg" sizes="any" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>CWP Backup Manager</title>
+
+    <style>
+      :root {
+        --bg: #020818;
+        --panel: rgba(6, 10, 24, 0.82);
+        --border: rgba(56, 189, 248, 0.18);
+        --text: #ffffff;
+        --muted: #ffffff;
+        --muted2: rgba(255, 255, 255, 0.7);
+        --accent: #38bdf8;
+        --accent2: #22c55e;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color-scheme: dark;
+        background: radial-gradient(900px circle at 20% 20%, rgba(56, 189, 248, 0.18), transparent 55%),
+          radial-gradient(700px circle at 85% 25%, rgba(34, 197, 94, 0.1), transparent 55%), var(--bg);
+        color: var(--text);
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.35;
+        background-image: linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(900px circle at 30% 20%, rgba(0, 0, 0, 1), transparent 60%);
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.02));
+        mix-blend-mode: overlay;
+      }
+      a {
+        color: var(--text);
+      }
+      a:visited,
+      a:hover,
+      a:active {
+        color: var(--text);
+      }
+      #root {
+        min-height: 100%;
+      }
+      .boot {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+      .bootCard {
+        width: min(520px, 100%);
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(6, 10, 24, 0.9), rgba(2, 8, 24, 0.78));
+        border-radius: 16px;
+        padding: 18px 18px 16px;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      }
+      .bootRow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .title {
+        font-size: 14px;
+        font-weight: 900;
+        letter-spacing: 0.02em;
+      }
+      .sub {
+        margin-top: 2px;
+        font-size: 12px;
+        color: var(--muted2);
+      }
+      .spinner {
+        margin-left: auto;
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        border: 2px solid #1e293b;
+        border-top-color: var(--accent);
+        animation: spin 0.9s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      noscript {
+        display: block;
+        margin-top: 12px;
+        color: var(--muted2);
+        font-size: 12px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .spinner {
+          animation: none;
+          border-top-color: #1e293b;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-FViCiCje.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div class="boot">
+        <div class="bootCard">
+          <div class="bootRow">
+            <div>
+              <div class="title">CWP Backup Manager</div>
+              <div class="sub"></div>
+            </div>
+            <div class="spinner" aria-label="Loading"></div>
+          </div>
+          <noscript>This app requires JavaScript enabled in your browser.</noscript>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

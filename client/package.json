@@ -1,0 +1,8 @@
+{
+  "name": "cwp-backup-client",
+  "version": "2.0.0",
+  "private": true,
+  "dependencies": { "react": "^18.3.1", "react-dom": "^18.3.1" },
+  "scripts": { "start": "vite", "build": "vite build" },
+  "devDependencies": { "@vitejs/plugin-react": "^4.3.1", "vite": "^5.3.3" }
+}

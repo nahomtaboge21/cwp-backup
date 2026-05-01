@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1776758429377",
+    "name": "hager",
+    "domain": "hageraman.com",
+    "plan": "Basic",
+    "schedule": "02:00",
+    "status": "error",
+    "backups": [],
+    "lastBackup": null,
+    "cwp": {
+      "host": "196.188.249.61",
+      "port": "2304",
+      "ssl": false,
+      "apiKey": "",
+      "username": "hagerama",
+      "rootUser": "root",
+      "rootPassword": "",
+      "sshPort": "22",
+      "backupPath": "/home/hagerama"
+    },
+    "createdAt": "2026-04-21T08:00:29.377Z"
+  }
+]

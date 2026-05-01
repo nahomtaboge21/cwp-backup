@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  server:
+    build: ./server
+    environment:
+      DEFAULT_CWP_API_KEY: ${DEFAULT_CWP_API_KEY}
+      CWP_API_KEY: ${CWP_API_KEY}
+      SESSION_SECRET: ${SESSION_SECRET}
+      FTP_CONTROL_TIMEOUT_MS: ${FTP_CONTROL_TIMEOUT_MS}
+      FTP_LIST_TIMEOUT_MS: ${FTP_LIST_TIMEOUT_MS}
+      FTP_FILE_TIMEOUT_MS: ${FTP_FILE_TIMEOUT_MS}
+      FTP_CONCURRENCY: ${FTP_CONCURRENCY}
+      FTP_DISABLE_EPSV: ${FTP_DISABLE_EPSV}
+      FTP_USE_MLSD: ${FTP_USE_MLSD}
+      FTP_ALLOW_ROOT: ${FTP_ALLOW_ROOT}
+      FTP_PASV_USE_CTRL_IP: ${FTP_PASV_USE_CTRL_IP}
+    volumes:
+      - ./data:/app/data
+      - ./backups:/app/backups
+    restart: unless-stopped
+  client:
+    build: ./client
+    ports: ["127.0.0.1:8090:80"]
+    depends_on: [server]
+    restart: unless-stopped
