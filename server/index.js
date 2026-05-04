@@ -1532,15 +1532,20 @@ async function runClientBackup(clientId, trigger = 'manual') {
       }
     }
 
-    // 2. Export DB via phpMyAdmin into tmp/<db>.sql.gz
+    // 2. Export DB via phpMyAdmin into tmp/<db>.sql.gz (optional — skip if no DB configured)
     await waitIfPaused();
-    log(clientId, 'info', `DB: exporting ${client.db.database} via phpMyAdmin...`);
-    setProgress(clientId, { status: 'running', stage: 'db_export', percent: 75, message: 'DB: exporting via phpMyAdmin…' });
-    const sqlFile = path.join(tmpDir, `${client.db.database}.sql.gz`);
-    if (shouldCancel()) throw new Error('Backup cancelled');
-    await mysqlDump(client, sqlFile);
-    log(clientId, 'info', 'DB: export complete');
-    setProgress(clientId, { status: 'running', stage: 'db_done', percent: 85, message: 'DB: export complete' });
+    if (client.db?.database) {
+      log(clientId, 'info', `DB: exporting ${client.db.database} via phpMyAdmin...`);
+      setProgress(clientId, { status: 'running', stage: 'db_export', percent: 75, message: 'DB: exporting via phpMyAdmin…' });
+      const sqlFile = path.join(tmpDir, `${client.db.database}.sql.gz`);
+      if (shouldCancel()) throw new Error('Backup cancelled');
+      await mysqlDump(client, sqlFile);
+      log(clientId, 'info', 'DB: export complete');
+      setProgress(clientId, { status: 'running', stage: 'db_done', percent: 85, message: 'DB: export complete' });
+    } else {
+      log(clientId, 'info', 'DB: no database configured — skipping DB export');
+      setProgress(clientId, { status: 'running', stage: 'db_done', percent: 85, message: 'DB: skipped (not configured)' });
+    }
 
     // 3. Pack everything (web/ + sql.gz) into a single ZIP (write to .part then rename)
     const zipName = `backup_${(client.domain || client.name).replace(/[^a-zA-Z0-9._-]/g, '_')}_${ts}.zip`;
